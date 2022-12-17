@@ -15,7 +15,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button changebutton;
+    private Button sendbutton;
     private TextView firsttext;
     private TextView errormsg;
     private EditText imputText;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        changebutton = (Button) findViewById(R.id.sendbutton);
+        sendbutton = (Button) findViewById(R.id.sendbutton);
         firsttext = (TextView) findViewById(R.id.firsttext);
         errormsg = (TextView) findViewById(R.id.errormsg);
         imputText = (EditText) findViewById(R.id.imputtext);
@@ -38,28 +38,25 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Button klick method
-        changebutton.setOnClickListener(new View.OnClickListener() {
+        sendbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String imputTextString = imputText.getText().toString();
                 String dropdownString = dropdown.getSelectedItem().toString();
 
-                if (imputTextString.equals("")){
-                    imputText.setText("Zitat Eingeben");
-                }
 
-                    //shor error masage
-                if (imputTextString.equals("Zitat Eingeben") || dropdownString.equals("Name")) {
+                    //show error masage
+                if (imputTextString.trim().isEmpty() || imputTextString.equals("Zitat Eingeben") || dropdownString.equals("Name")) {
 
                     errormsg.setVisibility(View.VISIBLE);
 
                     //hilight Imput fenster
-                    if (imputTextString.equals("Zitat Eingeben")) {
-                        imputText.setTextColor(0xFF0000);
+                    if (imputTextString.trim().isEmpty() || imputTextString.equals("Zitat Eingeben")) {
+                        //Wird ausgeführt wenn Zitat nich stimmt
                     }
                     //hilight dropdownfenster
                     if (dropdownString.equals("Name")) {
-                        dropdown.setBackgroundColor(0xFF0000);
+                        //Wird ausgeführt wenn Dropbox nicht stimmt
                     }
 
                     Timer timer = new Timer();
@@ -69,10 +66,12 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }, 2000); // 5 Sekunden = 5000 Millisekunden
 
+
                 }else{
                     errormsg.setVisibility(View.INVISIBLE);
                     firsttext.append(dropdownString + ": " + imputTextString + " #" + zaehler + "\n");
                     zaehler++;
+                    imputText.setText("");
                 }
             }
         });

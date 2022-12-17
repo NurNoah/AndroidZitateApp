@@ -69,7 +69,7 @@
 
     <Spinner
         android:id="@+id/dropdown"
-        android:layout_width="129dp"
+        android:layout_width="122dp"
         android:layout_height="52dp"
         android:contentDescription="@string/app_name"
         android:entries="@array/options"
