@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">First app</string>
+
+    <string-array name="options">
+        <item>Name</item>
+        <item>Noah</item>
+        <item>Italiner</item>
+        <item>Domi</item>
+    </string-array>
+
+</resources>
+
