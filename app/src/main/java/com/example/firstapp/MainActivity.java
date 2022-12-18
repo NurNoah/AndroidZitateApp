@@ -1,8 +1,11 @@
 package com.example.firstapp;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,14 +24,22 @@ public class MainActivity extends AppCompatActivity {
     private TextView errormsg;
     private EditText imputText;
     private Spinner dropdown;
+    private String[] dropdownlist;
+    private String othernames;
     private int zaehler = 1;
     private boolean allesgut = true;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Array verknüpfen
+        dropdownlist = getResources().getStringArray(R.array.options);
+
+        //Objekte verknüpfen
         sendbutton = (Button) findViewById(R.id.sendbutton);
         firsttext = (TextView) findViewById(R.id.firsttext);
         errormsg = (TextView) findViewById(R.id.errormsg);
@@ -92,8 +103,13 @@ public class MainActivity extends AppCompatActivity {
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String dropdownString = dropdown.getSelectedItem().toString();
+                if (dropdownString.equals("Andere")){
 
-                // Hier können Sie die Aktionen definieren, die bei Auswahländerungen ausgeführt werden sollen
+                    popout();
+
+                }
+
             }
 
             @Override
@@ -101,6 +117,29 @@ public class MainActivity extends AppCompatActivity {
                 // Hier können Sie die Aktionen definieren, die ausgeführt werden sollen, wenn kein Element ausgewählt ist
             }
         });
+    }
 
+    public void popout() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Name Eingeben");
+
+        // Füge ein EditText-Feld hinzu
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String text = input.getText().toString();
+
+                dropdownlist[3] = text;
+                dropdown.refreshDrawableState();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
