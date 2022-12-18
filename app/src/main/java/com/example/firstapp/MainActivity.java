@@ -1,5 +1,6 @@
 package com.example.firstapp;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -53,10 +54,12 @@ public class MainActivity extends AppCompatActivity {
                     //hilight Imput fenster
                     if (imputTextString.trim().isEmpty() || imputTextString.equals("Zitat Eingeben")) {
                         //Wird ausgeführt wenn Zitat nich stimmt
+                        imputText.setBackgroundColor(Color.YELLOW);
                     }
                     //hilight dropdownfenster
                     if (dropdownString.equals("Name")) {
                         //Wird ausgeführt wenn Dropbox nicht stimmt
+                        dropdown.setBackgroundColor(Color.YELLOW);
                     }
 
                     Timer timer = new Timer();
