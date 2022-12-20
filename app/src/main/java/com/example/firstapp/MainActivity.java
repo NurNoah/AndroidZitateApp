@@ -22,12 +22,12 @@ public class MainActivity extends AppCompatActivity {
     private Button sendbutton;
     private TextView firsttext;
     private TextView errormsg;
+    private TextView costumname;
     private EditText imputText;
     private Spinner dropdown;
-    private String[] dropdownlist;
-    private String othernames;
+    private String costumnametext;
     private int zaehler = 1;
-    private boolean allesgut = true;
+    private boolean costumnamebo = false;
 
 
 
@@ -36,13 +36,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Array verknüpfen
-        dropdownlist = getResources().getStringArray(R.array.options);
 
         //Objekte verknüpfen
         sendbutton = (Button) findViewById(R.id.sendbutton);
         firsttext = (TextView) findViewById(R.id.firsttext);
         errormsg = (TextView) findViewById(R.id.errormsg);
+        costumname = (TextView) findViewById(R.id.costumname);
         imputText = (EditText) findViewById(R.id.imputtext);
         dropdown = (Spinner) findViewById(R.id.dropdown);
 
@@ -80,11 +79,21 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }, 2000); // 5 Sekunden = 5000 Millisekunden
 
-
+                //wenn knopf durch geht
                 }else{
+                    //Testet nach costum names
+                    if (costumnamebo == true){
+                        firsttext.append(costumnametext + ": " + imputTextString + " #" + zaehler + "\n");
+                        dropdown.setVisibility(View.VISIBLE);
+                        costumname.setVisibility(View.INVISIBLE);
+                        dropdown.setSelection(0);
+                    }else {
+                        firsttext.append(dropdownString + ": " + imputTextString + " #" + zaehler + "\n");
+                    }
                     errormsg.setVisibility(View.INVISIBLE);
-                    firsttext.append(dropdownString + ": " + imputTextString + " #" + zaehler + "\n");
                     zaehler++;
+                    dropdown.setVisibility(View.VISIBLE);
+                    costumname.setVisibility(View.INVISIBLE);
                     imputText.setText("");
                 }
             }
@@ -132,10 +141,11 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String text = input.getText().toString();
-
-                dropdownlist[3] = text;
-                dropdown.refreshDrawableState();
+                costumnametext = input.getText().toString();
+                dropdown.setVisibility(View.INVISIBLE);
+                costumname.setText(costumnametext);
+                costumname.setVisibility(View.VISIBLE);
+                costumnamebo = true;
             }
         });
 
