@@ -2,6 +2,7 @@ package com.example.firstapp;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     if (imputTextString.trim().isEmpty() || imputTextString.equals("Zitat Eingeben")) {
                         //Wird ausgeführt wenn Zitat nich stimmt
                         imputText.setBackgroundColor(Color.YELLOW);
+                     //   imputText.setPaintFlags(imputText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                     }
                     //hilight dropdownfenster
                     if (dropdownString.equals("Name")) {
@@ -76,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                     timer.schedule(new TimerTask() {
                         public void run() {
                             errormsg.setVisibility(View.INVISIBLE);
+                       // imputText.setBackground(null);
+                            // imputText.setPaintFlags(imputText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                         }
                     }, 2000); // 5 Sekunden = 5000 Millisekunden
 
@@ -146,10 +150,28 @@ public class MainActivity extends AppCompatActivity {
                 costumname.setText(costumnametext);
                 costumname.setVisibility(View.VISIBLE);
                 costumnamebo = true;
+
+                // Fehlermeldung Andere Empty
+
+                if (costumnametext.trim().isEmpty()){
+                    errormsg.setVisibility(View.VISIBLE);
+                    dropdown.setVisibility(View.VISIBLE);
+                    dropdown.setSelection(0);
+                }
+
             }
+
+
+
         });
+
+        //Error Message Andere
+
+
+
 
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
 }
