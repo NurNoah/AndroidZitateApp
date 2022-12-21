@@ -24,19 +24,18 @@ public class MainActivity extends AppCompatActivity {
     private TextView firsttext;
     private TextView errormsg;
     private TextView costumname;
+    private View inputViewerror;
+    private View dropdownerror;
     private EditText imputText;
     private Spinner dropdown;
     private String costumnametext;
     private int zaehler = 1;
     private boolean costumnamebo = false;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         //Objekte verknüpfen
         sendbutton = (Button) findViewById(R.id.sendbutton);
@@ -45,9 +44,10 @@ public class MainActivity extends AppCompatActivity {
         costumname = (TextView) findViewById(R.id.costumname);
         imputText = (EditText) findViewById(R.id.imputtext);
         dropdown = (Spinner) findViewById(R.id.dropdown);
+        inputViewerror = (View) findViewById(R.id.inputerror);
+        dropdownerror = (View) findViewById(R.id.dropdownerror);
 
         firsttext.setMovementMethod(new ScrollingMovementMethod());
-
 
         //Button klick method
         sendbutton.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 String imputTextString = imputText.getText().toString();
                 String dropdownString = dropdown.getSelectedItem().toString();
 
-
                     //show error masage
                 if (imputTextString.trim().isEmpty() || imputTextString.equals("Zitat Eingeben") || dropdownString.equals("Name")) {
 
@@ -64,24 +63,35 @@ public class MainActivity extends AppCompatActivity {
 
                     //hilight Imput fenster
                     if (imputTextString.trim().isEmpty() || imputTextString.equals("Zitat Eingeben")) {
-                        //Wird ausgeführt wenn Zitat nich stimmt
-                        imputText.setBackgroundColor(Color.YELLOW);
-                     //   imputText.setPaintFlags(imputText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+                        inputViewerror.setVisibility(View.VISIBLE);
+
                     }
                     //hilight dropdownfenster
                     if (dropdownString.equals("Name")) {
-                        //Wird ausgeführt wenn Dropbox nicht stimmt
-                        dropdown.setBackgroundColor(Color.YELLOW);
+
+                        dropdownerror.setVisibility(View.VISIBLE);
+
                     }
 
                     Timer timer = new Timer();
                     timer.schedule(new TimerTask() {
                         public void run() {
                             errormsg.setVisibility(View.INVISIBLE);
-                       // imputText.setBackground(null);
-                            // imputText.setPaintFlags(imputText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                         }
-                    }, 2000); // 5 Sekunden = 5000 Millisekunden
+                    }, 2000); // 2 Sekunden = 2000 Millisekunden
+                    Timer timer2 = new Timer();
+                    timer.schedule(new TimerTask() {
+                        public void run() {
+                            dropdownerror.setVisibility(View.INVISIBLE);
+                        }
+                    }, 2000); // 2 Sekunden = 2000 Millisekunden
+                    Timer timer3 = new Timer();
+                    timer.schedule(new TimerTask() {
+                        public void run() {
+                            inputViewerror.setVisibility(View.INVISIBLE);
+                        }
+                    }, 2000); // 2 Sekunden = 2000 Millisekunden
 
                 //wenn knopf durch geht
                 }else{
@@ -90,10 +100,11 @@ public class MainActivity extends AppCompatActivity {
                         firsttext.append(costumnametext + ": " + imputTextString + " #" + zaehler + "\n");
                         dropdown.setVisibility(View.VISIBLE);
                         costumname.setVisibility(View.INVISIBLE);
-                        dropdown.setSelection(0);
+
                     }else {
                         firsttext.append(dropdownString + ": " + imputTextString + " #" + zaehler + "\n");
                     }
+                    dropdown.setSelection(0);
                     errormsg.setVisibility(View.INVISIBLE);
                     zaehler++;
                     dropdown.setVisibility(View.VISIBLE);
@@ -120,11 +131,8 @@ public class MainActivity extends AppCompatActivity {
                 if (dropdownString.equals("Andere")){
 
                     popout();
-
                 }
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Hier können Sie die Aktionen definieren, die ausgeführt werden sollen, wenn kein Element ausgewählt ist
@@ -157,19 +165,19 @@ public class MainActivity extends AppCompatActivity {
                     errormsg.setVisibility(View.VISIBLE);
                     dropdown.setVisibility(View.VISIBLE);
                     dropdown.setSelection(0);
+
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        public void run() {
+                            errormsg.setVisibility(View.INVISIBLE);
+                        }
+                    }, 2000); // 2 Sekunden = 2000 Millisekunden
                 }
 
             }
-
-
-
         });
-
         //Error Message Andere
-
-
-
-
+        builder.setCancelable(false);
         AlertDialog dialog = builder.create();
         dialog.show();
     }

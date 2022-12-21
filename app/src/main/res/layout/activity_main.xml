@@ -72,7 +72,7 @@
 
     <Spinner
         android:id="@+id/dropdown"
-        android:layout_width="122dp"
+        android:layout_width="113dp"
         android:layout_height="52dp"
         android:contentDescription="@string/app_name"
         android:entries="@array/options"
@@ -113,6 +113,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.958" />
+
+    <View
+        android:id="@+id/inputerror"
+        android:layout_width="230dp"
+        android:layout_height="3dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imputtext"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/dropdownerror"
+        android:layout_width="81dp"
+        android:layout_height="3dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dropdown"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </android.support.constraint.ConstraintLayout>
