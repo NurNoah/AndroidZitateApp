@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         inputViewerror = (View) findViewById(R.id.inputerror);
         dropdownerror = (View) findViewById(R.id.dropdownerror);
 
-        firsttext.setMovementMethod(new ScrollingMovementMethod());
+        // firsttext.setMovementMethod(new ScrollingMovementMethod()); // test
 
         //Button klick method
         sendbutton.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,11 @@ public class MainActivity extends AppCompatActivity {
                 if (imputTextString.trim().isEmpty() || imputTextString.equals("Zitat Eingeben") || dropdownString.equals("Name")) {
 
                     errormsg.setVisibility(View.VISIBLE);
-
+                    dropdown.setVisibility(View.VISIBLE);
+                    costumname.setVisibility(View.INVISIBLE);
+                    if(dropdownString.equals("Andere")) {
+                        dropdown.setSelection(0);
+                    }
                     //hilight Imput fenster
                     if (imputTextString.trim().isEmpty() || imputTextString.equals("Zitat Eingeben")) {
 
