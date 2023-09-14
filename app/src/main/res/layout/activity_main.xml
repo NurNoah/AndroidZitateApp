@@ -7,27 +7,14 @@
     android:layout_centerInParent="false"
     android:layout_centerHorizontal="false"
     android:layout_centerVertical="false"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/firsttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="13"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
 
 
     <EditText
         android:id="@+id/imputtext"
         android:layout_width="230dp"
-        android:layout_height="52dp"
+        android:layout_height="53dp"
         android:ems="10"
         android:inputType="text"
         android:minHeight="48dp"
@@ -37,38 +24,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintHorizontal_bias="0.809"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firsttext"
-        app:layout_constraintVertical_bias="0.945" />
-
-    <Button
-        android:id="@+id/sendbutton"
-        android:layout_width="362dp"
-        android:layout_height="48dp"
-        android:fitsSystemWindows="true"
-        android:text="Send"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/imputtext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firsttext"
-        app:layout_constraintVertical_bias="1.0"
-       />
-
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bisherige Zitate"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/firsttext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/sendbutton"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
         android:id="@+id/dropdown"
@@ -78,10 +37,80 @@
         android:entries="@array/options"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firsttext"
-        app:layout_constraintVertical_bias="0.945" />
+        app:layout_constraintTop_toBottomOf="@+id/sendbutton"
+        app:layout_constraintVertical_bias="0.027" />
+
+    <View
+        android:id="@+id/dropdownerror"
+        android:layout_width="81dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="4dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dropdown"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/inputerror"
+        android:layout_width="230dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="4dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imputtext"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/costumname"
+        android:layout_width="61dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="13dp"
+        android:text="Error"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sendbutton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/sendbutton"
+        android:layout_width="362dp"
+        android:layout_height="48dp"
+        android:fitsSystemWindows="true"
+        android:text="Send"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.876" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="171dp"
+        android:layout_height="34dp"
+        android:text="Bisherige Zitate"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
 
     <TextView
         android:id="@+id/errormsg"
@@ -94,51 +123,43 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/sendbutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/costumname"
-        android:layout_width="61dp"
-        android:layout_height="39dp"
-        android:text="Error"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="411dp"
+
+        android:layout_height="504dp"
+        android:layout_marginBottom="31dp"
+        app:layout_constraintBottom_toTopOf="@+id/sendbutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958" />
+        app:layout_constraintVertical_bias="0.804">
 
-    <View
-        android:id="@+id/inputerror"
-        android:layout_width="230dp"
-        android:layout_height="3dp"
-        android:background="#FF0000"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imputtext"
-        app:layout_constraintVertical_bias="0.0" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <View
-        android:id="@+id/dropdownerror"
-        android:layout_width="81dp"
-        android:layout_height="3dp"
-        android:background="#FF0000"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dropdown"
-        app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/firsttext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold">
+
+
+            </TextView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>
